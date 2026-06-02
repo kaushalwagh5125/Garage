@@ -1,0 +1,15 @@
+{
+  "name": "garage-root",
+  "version": "1.0.0",
+  "description": "Root orchestrator for Garage EV services",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix frontend && npm install --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev": "npx -y concurrently -k -p \"[{name}]\" -n \"Frontend,Backend\" -c \"cyan,green\" \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
+    "start:frontend": "npm run start --prefix frontend",
+    "start:backend": "npm run start --prefix backend",
+    "start": "npx -y concurrently -k -p \"[{name}]\" -n \"Frontend,Backend\" -c \"cyan,green\" \"npm run start --prefix frontend\" \"npm run start --prefix backend\""
+  }
+}

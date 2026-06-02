@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #060808; /* Deep obsidian EV hangar base */
+  --foreground: #E8ECE9; /* Bright silver-white */
+  --foreground-muted: #8E9C95; /* Cool tech-gray */
+  --border-color: rgba(178, 240, 36, 0.15); /* Delicate neon lime boundaries */
+  
+  --neon-orange: #A2D43D; /* Replaced with lime-green for glow compatibility */
+  --neon-pink: #A2D43D; 
+  --neon-yellow: #B2F024; /* High-voltage lime/yellow-green accent */
+  --neon-green: #03C03C; /* Secondary solid green */
+  --neon-blue: #A2D43D; 
+  --dark-navy: rgba(178, 240, 36, 0.05); /* Soft spring light lime overlay */
+  
+  --scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar - Premium Dark Theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-green), var(--neon-yellow));
+  border-radius: 4px;
+  border: 1px solid var(--background);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--neon-yellow), #ffffff);
+}
+
+html, body {
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  overflow-x: hidden;
+  font-family: 'Outfit', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Beautiful subtle green tech grid background */
+.grid-bg {
+  background-image: linear-gradient(rgba(178, 240, 36, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(178, 240, 36, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glassmorphism Premium Cards - Dark Mode */
+.glass-card {
+  background: rgba(10, 13, 12, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(178, 240, 36, 0.3);
+  box-shadow: 0 10px 40px rgba(178, 240, 36, 0.1);
+  transform: translateY(-5px);
+}
+
+/* Neon Text Glows */
+.neon-text-green {
+  text-shadow: 0 0 10px rgba(178, 240, 36, 0.5), 0 0 20px rgba(178, 240, 36, 0.15);
+}
+
+.neon-text-yellow {
+  text-shadow: 0 0 10px rgba(178, 240, 36, 0.6), 0 0 20px rgba(178, 240, 36, 0.2);
+}
+
+/* Glowing Border Animations */
+.animated-glow-border {
+  position: relative;
+  overflow: hidden;
+}
+.animated-glow-border::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent, 
+    var(--neon-green), 
+    var(--neon-yellow), 
+    transparent 30%
+  );
+  animation: rotateGlow 4s linear infinite;
+  z-index: 0;
+}
+.animated-glow-border-inner {
+  position: relative;
+  z-index: 1;
+  background: var(--background);
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+}
+
+/* Custom Interactive Cursor */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--neon-yellow);
+  background: rgba(178, 240, 36, 0.08);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
+  box-shadow: 0 0 10px rgba(178, 240, 36, 0.3);
+}
+.custom-cursor-active {
+  width: 45px;
+  height: 45px;
+  border-color: var(--neon-green);
+  background: rgba(3, 192, 60, 0.15);
+  box-shadow: 0 0 15px rgba(3, 192, 60, 0.3);
+}
+
+/* Dynamic Animation Keyframes */
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.05); filter: brightness(1.2) drop-shadow(0 0 15px var(--neon-yellow)); }
+}
+
+@keyframes floatElement {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes orbitSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes telemetryRadarPulse {
+  0% { transform: scale(0.95); opacity: 0.2; }
+  50% { transform: scale(1.03); opacity: 0.8; }
+  100% { transform: scale(0.95); opacity: 0.2; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Custom Animation Utility Classes */
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+.animate-float {
+  animation: floatElement 6s ease-in-out infinite;
+}
+.animate-orbit {
+  animation: orbitSpin 12s linear infinite;
+}
+.animate-telemetry-radar {
+  animation: telemetryRadarPulse 4s ease-in-out infinite;
+}
+
+/* Lenis Smooth Scroll Compatibility */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Common button hover spring effect */
+.spring-scale-hover {
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.spring-scale-hover:hover {
+  transform: scale(1.03) translateY(-2px);
+}
